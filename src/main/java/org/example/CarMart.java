@@ -87,6 +87,7 @@ public class CarMart {
                 Car carForSale = new Car(specificId, brandScan, typeScan, ageScan, priceScan, kmScan);
                 listOfCars.add(carForSale);
                 listOfIds.clear();
+                System.out.println("Your car was sold.");
             }
         } while (!customerSelectedValidChoice);
 
