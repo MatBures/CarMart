@@ -1,24 +1,23 @@
 package org.example;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/* CarMart class has many methods for running the program successfully.
-   Methods: addingCarsToList;
-            showCarsInCarMart;
-            sellCarToCarMart;
-            buyCarFromCartMart;
-            validateIntegerInput;
+/**
+ * CarMart class has many methods for running the program successfully.
+ * addingCarsToList;
+ * showCarsInCarMart;
+ * sellCarToCarMart;
+ * buyCarFromCartMart;
+ * validateIntegerInput;
  */
 public class CarMart {
-    Scanner scanner = new Scanner(System.in);
-    public Scanner validateScanner = new Scanner(System.in);
-    int removeById;
-    boolean customerSelectedValidChoice = true;
-    int specificId;
-    List<Integer> listOfIds = new ArrayList<Integer>();
-    List<Car> listOfCars = new ArrayList<>();
+    private Scanner scanner = new Scanner(System.in);
+    private Scanner validateScanner = new Scanner(System.in);
+    private int removeById;
+    private boolean customerSelectedValidChoice = true;
+    private int specificId;
+    private List<Car> listOfCars = new ArrayList<>();
 
     //Method that is adding cars to list.
     public void addingCarsToList() {
@@ -51,6 +50,7 @@ public class CarMart {
     //Method for option number 2) Creating and adding new car object, and adding the object to list where are other car objects.
     public void sellCarToCarMart() {
 
+        List<Integer> listOfIds = new ArrayList<Integer>();
         //Scanning car's brand and type.
         System.out.println("Write down the brand of car.");
         String brandScan = scanner.next();
@@ -59,11 +59,11 @@ public class CarMart {
 
         //Using validateIntegerInput method for checking if scanned input is integer or string, because we need to work with integers for age, price, km.
         System.out.println("Write down the age of car.");
-        int ageScan = validateIntegerInput();
+        int ageScan = getValidatedIntegerInput();
         System.out.println("Write down the price of car.");
-        int priceScan = validateIntegerInput();
+        int priceScan = getValidatedIntegerInput();
         System.out.println("Write down the km on of car.");
-        int kmScan = validateIntegerInput();
+        int kmScan = getValidatedIntegerInput();
 
         int i = 0;
 
@@ -86,7 +86,6 @@ public class CarMart {
                 //Creating new object carForSale and adding it to listOfCars. Then the program clears listOfIds for working next time.
                 Car carForSale = new Car(specificId, brandScan, typeScan, ageScan, priceScan, kmScan);
                 listOfCars.add(carForSale);
-                listOfIds.clear();
                 System.out.println("Your car was sold.");
             }
         } while (!customerSelectedValidChoice);
@@ -95,11 +94,12 @@ public class CarMart {
 
     //Method for option number 3) Removing car object from list by his id.
     public void buyCarFromCartMart() {
+        List<Integer> listOfIds = new ArrayList<Integer>();
 
         do {
 
             //User will input number for specifying what car by his id want to remove.
-            removeById = validateIntegerInput();
+            removeById = getValidatedIntegerInput();
             customerSelectedValidChoice = false;
 
             //For loop for listing all the cars and getting their ids. Then the program save the ids to listOfIds.
@@ -122,7 +122,6 @@ public class CarMart {
                 listOfCars.remove(index);
                 System.out.println("You bought a car. Enjoy it!");
                 customerSelectedValidChoice = true;
-                listOfIds.clear();
                 break;
 
             } else {
@@ -136,7 +135,7 @@ public class CarMart {
        The program needs this information to not throw errors, for example if user has to input id of car.
        User inputs "red" the program would crash, because the id needs to be integer type.
     */
-    public int validateIntegerInput() {
+    private int getValidatedIntegerInput() {
         int inputtedInteger;
         if (validateScanner.hasNextInt()) {
             inputtedInteger = validateScanner.nextInt();
@@ -145,6 +144,6 @@ public class CarMart {
 
         validateScanner.next();
         System.out.println("Invalid entry. You need to input number.");
-        return validateIntegerInput();
+        return getValidatedIntegerInput();
     }
 }

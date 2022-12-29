@@ -1,10 +1,9 @@
 package org.example;
 
-import java.util.List;
-
-/*Car class with parameters, creating instance.
-  Needed for getId getter and toString method.
-*/
+/**
+ * Car class with parameters, creating instance.
+ * Needed for getId getter and toString method.
+ */
 public class Car {
     private int id;
     private String brand;

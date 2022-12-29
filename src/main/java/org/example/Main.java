@@ -1,15 +1,13 @@
 package org.example;
-
 import java.util.*;
-
-
 public class Main {
 
-    /*Main method has 4 options that user can use.
-      1)Showing the list of all cars by showCarsInCarMart method.
-      2)Selling the car to list by sellCarToCarMart method.
-      3)Buying the car from list by buyCarFromCartMart method.
-      4)Exiting program.
+    /**
+     * Main method has 4 options that user can use.
+     * 1)Showing the list of all cars by showCarsInCarMart method.
+     * 2)Selling the car to list by sellCarToCarMart method.
+     * 3)Buying the car from list by buyCarFromCartMart method.
+     * 4)Exiting program.
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
