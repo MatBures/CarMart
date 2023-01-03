@@ -1,4 +1,5 @@
 package org.example;
+import java.io.IOException;
 import java.util.*;
 public class Main {
 
@@ -9,12 +10,12 @@ public class Main {
      * 3)Buying the car from list by buyCarFromCartMart method.
      * 4)Exiting program.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         CarMart carMart = new CarMart();
 
-        //Adding cars to list by method.
-        carMart.addingCarsToList();
+        //Adding cars to list by method. Now its commented because reader and writer from/to txt. document is added.
+        // carMart.addingCarsToList();
 
 
         //Introduction + repeatText is needed for do while loops (menu cant end, only if user input number 4) for option.
@@ -25,8 +26,12 @@ public class Main {
         //scanner what option user wants to use.
         int option = scanner.nextInt();
 
+        //Calling loadCarsFromTxtFile method to load car objects written in txt document in resources package to fill listOfCars.
+        carMart.loadCarsFromTxtFile(carMart.listOfCars);
+
         //Do while loop
         do {
+
 
             //1. Option number 1) Using showCarsInCarMart method for printing all cars with parameters to console separated by -------
             if (option == 1) {
@@ -63,6 +68,8 @@ public class Main {
         //While option isn't 4, loop is continuing to loop. If user input number 4 for option scanner, program will end.
         } while (option != 4);
         System.out.println("See you next time.");
+        carMart.saveCarsToTxtFile(carMart.listOfCars);
+
     }
 }
 

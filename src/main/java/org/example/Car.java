@@ -26,7 +26,28 @@ public class Car {
         return id;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getKm() {
+        return km;
+    }
+
     public String toString() {
         return id + ", " + brand + ", " + type + ", " + age + ", " + price + ", " + km;
     }
 }
+
