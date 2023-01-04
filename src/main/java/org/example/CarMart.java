@@ -20,8 +20,8 @@ public class CarMart {
     private int removeById;
     private boolean customerSelectedValidChoice = true;
     private int specificId;
-    public static List<Car> listOfCars = new ArrayList<>();
-    private static final String txtFilePathWithOwnedCars ="src/main/resources/autobazar_data.txt";
+    public List<Car> listOfCars = new ArrayList<>();
+    public static final String txtFilePathWithOwnedCars = "src/main/resources/autobazar_data.txt";
 
     //Method that is adding cars to list.
     public void addingCarsToList() {
@@ -43,7 +43,10 @@ public class CarMart {
 
     //Method for option number 1) Printing toString method for each car separated in console by -----
     public void showCarsInCarMart() {
+        if (listOfCars.isEmpty()) {
 
+        } else
+            System.out.println("Here you can see the list of cars in out car mart: ");
         for (int i = 0; i < listOfCars.size(); i++) {
             System.out.println(listOfCars.get(i));
             System.out.println("---------------------------------------------");
@@ -150,39 +153,4 @@ public class CarMart {
         System.out.println("Invalid entry. You need to input number.");
         return getValidatedIntegerInput();
     }
-
-    /* Method that is using BufferedWriter. For loop that goes through list for each car object and writer will write every car's parameter separated with ","
-       by using get methods from Class Car.
-    */
-    public void saveCarsToTxtFile(List<Car> listOfCars) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(txtFilePathWithOwnedCars))) {
-            for (Car car : listOfCars) {
-                writer.write(car.getId() + ", " + car.getBrand() + ", " + car.getType() + ", " + car.getAge() + ", " + car.getPrice() + ", " + car.getKm());
-                writer.newLine();
-            }
-        }
-    }
-
-    /* Method that is using BufferedReader. While there is a line in txt document, the reader will put each field in txt document and make new car object.
-    First field [0] is for car's id, second field [1] is for car's brand and so on.
-    Then the new car object carToAddToTxtFile is added to listOfCars.
-    */
-    public List<Car> loadCarsFromTxtFile(List<Car> listOfCars)  throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(txtFilePathWithOwnedCars))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] fields = line.split(", ");
-                int id = Integer.parseInt(fields[0]);
-                String brand = fields[1];
-                String type = fields[2];
-                int age = Integer.parseInt(fields[3]);
-                int price = Integer.parseInt(fields[4]);
-                int km = Integer.parseInt(fields[5]);
-                Car carToAddToTxtFile = new Car(id, brand, type, age, price, km);
-                listOfCars.add(carToAddToTxtFile);
-            }
-        }
-        return listOfCars;
-    }
-
 }

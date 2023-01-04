@@ -1,3 +1,5 @@
 1, Toyota, Yarns, 6, 540000, 65000
 2, BMW, X5, 8, 400000, 115000
-3, Mercedes, Benz, 3, 560000, 50420
+3, Mercedes, Benz, 12, 200000, 300000
+4, Porsche, Boaster, 2, 15000000, 1900
+5, Audi, A8, 4, 450000, 32500
