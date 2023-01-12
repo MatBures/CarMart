@@ -1,5 +1,8 @@
-package org.example;
-import java.io.IOException;
+package CarMart;
+import CarMartServices.LoadCarsFromTxtFileService;
+import CarMartServices.SaveCarsToTxtFileService;
+import Security.SecurityCypher;
+
 import java.util.*;
 public class Main {
 
@@ -15,11 +18,10 @@ public class Main {
         CarMart carMart = new CarMart();
         SaveCarsToTxtFileService saveCarsToTxtFileService = new SaveCarsToTxtFileService();
         LoadCarsFromTxtFileService loadCarsFromTxtFileService = new LoadCarsFromTxtFileService();
-
+        SecurityCypher security = new SecurityCypher();
 
         //Adding cars to list by method. Now its commented because reader and writer from/to txt. document is added.
         // carMart.addingCarsToList();
-
 
         //Introduction + repeatText is needed for do while loops (menu cant end, only if user input number 4) for option.
         System.out.println("Welcome to car mart.");
@@ -65,6 +67,9 @@ public class Main {
 
                 //4. Option number 4) Exiting program. (condition for while, needed for first run.)
                 else if (option == 4) {
+                    security.encryptCarMartData(carMart.listOfCars);
+
+
 
                 }
 

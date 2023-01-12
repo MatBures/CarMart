@@ -1,4 +1,4 @@
-package org.example;
+package CarMart;
 
 /**
  * Car class with parameters, creating instance.
@@ -11,7 +11,6 @@ public class Car {
     private int age;
     private int price;
     private int km;
-
 
     public Car(int id, String brand, String type, int age, int price, int km) {
         this.id = id;
